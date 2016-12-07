@@ -2,7 +2,7 @@ version: '2'
 
 services:
     dkfbasel-search:
-        image: dkfbasel/hot-reload-webpack:2.0.0
+        image: dkfbasel/hot-reload-webpack:2.1.0
         ports:
             - "3000:3000"
         volumes:
