@@ -90,8 +90,8 @@
 
 			<svg class="ch-dkfbasel-search-icon" width="18px" height="18px" viewBox="0 0 18 18" version="1.1"
 				xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-			    <circle cx="7.5" cy="7.5" r="6.5"></circle>
-			    <path d="M12.5,12.5 L16,16" stroke-linecap="round"></path>
+				<circle cx="7.5" cy="7.5" r="6.5"></circle>
+				<path d="M12.5,12.5 L16,16" stroke-linecap="round"></path>
 			</svg>
 
 		</div>
@@ -146,10 +146,8 @@
 
 		<ul class="ch-dkfbasel-search-results">
 
-			<slot name="result" v-for="result in results" :title="result.title"
-				:description="result.description">
-				<!-- <span class="ch-dkfbasel-search-result-item">{{result.title}}</span> -->
-			</slot>
+			<slot v-for="item in results" name="result" :title="item.title"
+			:description="item.description"></slot>
 
 		</ul>
 

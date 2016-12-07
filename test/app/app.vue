@@ -21,8 +21,8 @@
 				<div class="start-info">This is starting text</div>
 			</template>
 
-			<template slot="result" scope="props" inline-template>
-				<li class="single-result">{{props.title}}</li>
+			<template slot="result" scope="results">
+				<li class="single-result">My custom: {{results.title}}</li>
 			</template>
 
 		</search>
