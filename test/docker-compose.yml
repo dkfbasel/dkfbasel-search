@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+    dkfbasel-search:
+        image: dkfbasel/hot-reload-webpack:2.0.0
+        ports:
+            - "3000:3000"
+        volumes:
+            - ..:/app
+        environment:
+            - DIRECTORY=test
+            - COMMAND=npm run dev

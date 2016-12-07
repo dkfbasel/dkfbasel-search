@@ -1,0 +1,12 @@
+{
+  "name": "dkfbasel.search.test",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Vu Duong, Department of Clinical Research, University Hospital Basel",
+  "scripts": {
+    "dev": "webpack-dev-server --content-base ./ --inline --hot --quiet --host 0.0.0.0 --port 3000"
+  },
+  "dependencies": {
+    "vue": "^2.1.4"
+  }
+}

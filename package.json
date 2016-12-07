@@ -1,0 +1,15 @@
+{
+  "name": "dkfbasel.search",
+  "version": "1.0.0",
+  "description": "An easy-to-use vue.js search component",
+  "main": "search.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "search",
+    "vue"
+  ],
+  "author": "Vu Duong",
+  "license": "MIT"
+}
