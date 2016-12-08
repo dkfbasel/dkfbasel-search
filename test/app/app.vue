@@ -21,8 +21,9 @@
 				<div class="start-info">This is starting text</div>
 			</template>
 
-			<template slot="result" scope="results">
-				<li class="single-result">My custom: {{results.title}}</li>
+			<template slot="result" scope="props">
+				<li class="single-result" :key="props.index"
+				:data-index="props.index">{{props.result.title}}</li>
 			</template>
 
 		</search>

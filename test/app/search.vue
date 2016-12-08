@@ -142,19 +142,26 @@
 
 		</div>
 
-		<slot name="start" v-if="results.length <= 0"></slot>
+		<slot name="start" v-if="results.length <= 0 && search_term.length <= 0"></slot>
 
-		<ul class="ch-dkfbasel-search-results">
+		<transition-group class="ch-dkfbasel-search-results" tag="ul"
+			@leave="leave"  @enter="enter" @before-enter="beforeEnter">
 
-			<slot v-for="item in results" name="result" :title="item.title"
-			:description="item.description"></slot>
+			<slot v-for="(item, index) in results" name="result" :result="item"
+				:index="index">
+				<li :key="index">
+					No template provided: {{item}}
+				</li>
+			</slot>
 
-		</ul>
+		</transition-group>
 
 	</div>
 </template>
 
 <script lang="babel">
+
+	import dynamics from 'dynamics.js';
 
 	module.exports = {
 
@@ -178,7 +185,10 @@
 
 			onInput() {
 				// inform the user that pressing enter will start the search
-				this.hint = 'typing';
+				if (this.hint != 'typing') {
+					this.hint = 'typing';
+					this.results = [];
+				}
 			},
 
 			onSearch() {
@@ -203,8 +213,50 @@
 				if (this.search_term == '') {
 					this.hint = '';
 				}
-			}
+			},
 
+			// vue transition handling for the result group
+			beforeEnter(el) {
+				// set the opacity and translation to the initial value before
+				// the animation starts
+				dynamics.css(el, {
+					opacity: 0,
+					translateY: 50
+				});
+
+			},
+
+			enter(el, done) {
+				// accelerate the staggering with each result item
+				var delay = Math.sqrt(el.dataset.index) * 50 + 150;
+				// animate in result
+				setTimeout(() => {
+					dynamics.animate(el, {
+						opacity: 1,
+						translateY: 0
+					}, {
+						type: dynamics.easeOut,
+						duration: 400,
+						friction: 200
+					});
+				}, delay);
+			},
+
+			leave(el, done) {
+				// stagger the result items animation out linear
+				var delay = el.dataset.index * 50;
+				// animate out result
+				setTimeout(() => {
+					dynamics.animate(el, {
+						opacity: 0,
+						translateY: 0
+					}, {
+						type: dynamics.easeOut,
+						duration: 100,
+						friction: 100
+					});
+				}, delay);
+			}
 		}
 
 	}
