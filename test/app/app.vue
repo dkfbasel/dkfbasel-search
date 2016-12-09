@@ -21,6 +21,12 @@
 				<div class="start-info">This is starting text</div>
 			</template>
 
+			<template slot="hint_result" scope="props">
+				Your search for
+				<span quotation>{{props.term}}</span>
+				has returned {{props.amount}} results
+			</template>
+
 			<template slot="result" scope="props">
 				<li class="single-result" :key="props.index"
 				:data-index="props.index">{{props.result.title}}</li>

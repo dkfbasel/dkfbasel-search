@@ -130,7 +130,7 @@
 						<path fill="none" stroke="#000" stroke-width="1" d="M0 0 L5 5 L0 10"></path>
 					</svg>
 
-					<slot name="hint_result">
+					<slot name="hint_result" :term="search_term" :amount="results.length">
 						Ihre Suchanfrage für
 						<span quotation>{{search_term}}</span>
 						hat {{results.length}} Ergebnisse geliefert
