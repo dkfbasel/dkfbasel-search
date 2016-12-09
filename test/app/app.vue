@@ -28,8 +28,7 @@
 			</template>
 
 			<template slot="result" scope="props">
-				<li class="single-result" :key="props.index"
-				:data-index="props.index">{{props.result.title}}</li>
+				<span>{{props.result.title}}</span>
 			</template>
 
 		</search>
@@ -52,6 +51,8 @@
 
 		data() {
 			return {
+				uppercase: false,
+
 				props: [],
 				search_term: ''
 			};
@@ -59,7 +60,7 @@
 
 		methods: {
 
-			startSearch() {
+			startSearch(search_term) {
 
 				let books = [
 					{ title: 'Cook book', description: 'Yammy' },
@@ -68,7 +69,7 @@
 				]
 
 				let result = books.filter((book) => {
-					return book.title.indexOf(this.search_term) > -1;
+					return book.title.indexOf(search_term) > -1;
 				});
 
 				return new Promise((resolve) => setTimeout(() => {
