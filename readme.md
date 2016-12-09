@@ -1,7 +1,12 @@
-# vue-search
-vue-search is a fancy search component for vue.js 2.1+ taking advantage of the
-newly implemented scoped slots in vue. Just pass your own search command and
-define the presentation of hints and results as you like.
+# dkfbasel-search
+dkfbasel-search is a search component for vue.js 2.1+ handling search inputs
+and result rendering based on best practice experiences in terms of usability.
+For the most flexibility we are taking advantage of the newly implemented scoped
+slots in vue combined with vue transitions for high performance animations.
+
+Its simple usage makes it the best choice for your search implementation.
+Just pass your own search command and define the presentation of hints and
+results as you like.
 
 ## Requirements
 vue 2.1+
@@ -9,17 +14,17 @@ dynamics.js
 
 ## Installation
 ```
-$ npm install vue-search --save
+$ npm install dkfbasel-search --save
 ```
 
 ## Usage
-Import vue-search into your vue component:
+Import dkfbasel-search into your vue component:
 
 ```javascript
-import Search from 'vue-search';
+import Search from 'dkfbasel-search';
 ```
 
-Place the vue-search component inside your template and define the result
+Place the dkfbasel-search component inside your template and define the result
 presentation and optionally a content to be presented from the beginning:
 
 ```javascript
@@ -27,7 +32,7 @@ presentation and optionally a content to be presented from the beginning:
 
 	<template slot="start">
 		... // any html code, e.g.:
-		<div class="start-info">Welcome to vue-search. What are you looking for?</div>
+		<div class="start-info">Welcome to dkfbasel-search. What are you looking for?</div>
 	</template>
 
 	<template slot="result" scope="props">
