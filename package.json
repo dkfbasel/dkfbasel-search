@@ -1,6 +1,6 @@
 {
   "name": "dkfbasel-search",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An awesome search component for vue.js 2.1+",
   "main": "src/search.vue",
   "dependencies": {
@@ -10,7 +10,7 @@
     "search",
     "vue"
   ],
-  "repository": "https://github.org/dkfbasel/vue-search",
+  "repository": "https://github.org/dkfbasel/dkfbasel-search",
   "author": "Vu Duong",
   "license": "MIT"
 }
