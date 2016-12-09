@@ -10,6 +10,7 @@
     "search",
     "vue"
   ],
+  "repository": "https://github.org/dkfbasel/vue-search"
   "author": "Vu Duong",
   "license": "MIT"
 }
