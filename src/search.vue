@@ -147,12 +147,9 @@
 		<transition-group class="ch-dkfbasel-search-results" tag="ul"
 			@leave="leave"  @enter="enter" @before-enter="beforeEnter">
 
-			<slot v-for="(item, index) in results" name="result" :result="item"
-				:index="index">
-				<li :key="index">
-					No template provided: {{item}}
-				</li>
-			</slot>
+			<li v-for="(item, index) in results" :data-index="index" :key="index" :data-max="results.length">
+				<slot name="result" :result="item">No template provided: {{item}}</slot>
+			</li>
 
 		</transition-group>
 
@@ -196,7 +193,7 @@
 				this.hint = 'searching';
 
 				// launch the search query
-				let request = this.query();
+				let request = this.query(this.value);
 
 				let delay = new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -217,41 +214,38 @@
 
 			// vue transition handling for the result group
 			beforeEnter(el) {
-				// set the opacity and translation to the initial value before
+				// set the opacity to the initial value before
 				// the animation starts
 				dynamics.css(el, {
-					opacity: 0,
-					translateY: 50
+					opacity: 0
 				});
 
 			},
 
 			enter(el, done) {
 				// accelerate the staggering with each result item
-				var delay = Math.sqrt(el.dataset.index) * 50 + 150;
+				let delay = Math.sqrt(el.dataset.index) * 50 + 150;
 				// animate in result
 				setTimeout(() => {
 					dynamics.animate(el, {
-						opacity: 1,
-						translateY: 0
+						opacity: 1
 					}, {
 						type: dynamics.easeOut,
-						duration: 400,
-						friction: 200
+						duration: 200,
+						friction: 100
 					});
 				}, delay);
 			},
 
 			leave(el, done) {
 				// stagger the result items animation out linear
-				var delay = el.dataset.index * 50;
+				let delay = (el.dataset.max - el.dataset.index) * 10;
 				// animate out result
 				setTimeout(() => {
 					dynamics.animate(el, {
-						opacity: 0,
-						translateY: 0
+						opacity: 0
 					}, {
-						type: dynamics.easeOut,
+						type: dynamics.linear,
 						duration: 100,
 						friction: 100
 					});
