@@ -1,13 +1,10 @@
 {
-  "name": "dkfbasel.search",
+  "name": "dkfbasel-search",
   "version": "1.0.0",
   "description": "An easy-to-use vue.js search component",
   "main": "src/search.vue",
   "dependencies": {
     "dynamics.js": "^1.1.5"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "search",
