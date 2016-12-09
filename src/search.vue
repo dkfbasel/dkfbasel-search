@@ -247,7 +247,8 @@
 					}, {
 						type: dynamics.linear,
 						duration: 100,
-						friction: 100
+						friction: 100,
+						complete: done
 					});
 				}, delay);
 			}
