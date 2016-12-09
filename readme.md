@@ -36,10 +36,8 @@ presentation and optionally a content to be presented from the beginning:
 	</template>
 
 	<template slot="result" scope="props">
-		<li class="single-result" :key="props.index" :data-index="props.index">
-			... // any html code
-			// use {{props.result}} to access the result based on your data model
-		</li>
+		... // any html code
+		// use {{props.result}} to access the result based on your data model
 	</template>
 
 </search>
