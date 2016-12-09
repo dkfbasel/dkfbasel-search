@@ -15,7 +15,7 @@
 
 	<div class="wrapper">
 
-		<search autofocus :query="startSearch">
+		<search autofocus :query="startSearch" v-model="search_term">
 
 			<template slot="start">
 				<div class="start-info">This is starting text</div>
@@ -52,7 +52,8 @@
 
 		data() {
 			return {
-				props: []
+				props: [],
+				search_term: ''
 			};
 		},
 
@@ -60,16 +61,18 @@
 
 			startSearch() {
 
-				let result = {
-					books: [
-						{ title: 'Cook book', description: 'Yammy' },
-						{ title: 'Book of tales', description: 'Woah' },
-						{ title: 'Everything for dummies', description: 'Ahhh!' }
-					]
-				};
+				let books = [
+					{ title: 'Cook book', description: 'Yammy' },
+					{ title: 'Book of tales', description: 'Woah' },
+					{ title: 'Everything for dummies', description: 'Ahhh!' }
+				]
+
+				let result = books.filter((book) => {
+					return book.title.indexOf(this.search_term) > -1;
+				});
 
 				return new Promise((resolve) => setTimeout(() => {
-					return resolve(result.books)
+					return resolve(result)
 				}, 500));
 			}
 

@@ -85,8 +85,8 @@
 
 		<div class="ch-dkfbasel-search-box">
 
-			<input type="text" v-model="search_term" @blur="onBlur"
-				@input="onInput" @keyup.enter="onSearch" ref="searchbox"></input>
+			<input type="text" v-bind:value="value" @blur="onBlur"
+				@input="onInput($event.target.value)" @keyup.enter="onSearch" ref="searchbox"></input>
 
 			<svg class="ch-dkfbasel-search-icon" width="18px" height="18px" viewBox="0 0 18 18" version="1.1"
 				xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -130,9 +130,9 @@
 						<path fill="none" stroke="#000" stroke-width="1" d="M0 0 L5 5 L0 10"></path>
 					</svg>
 
-					<slot name="hint_result" :term="search_term" :amount="results.length">
+					<slot name="hint_result" :term="value" :amount="results.length">
 						Ihre Suchanfrage für
-						<span quotation>{{search_term}}</span>
+						<span quotation>{{value}}</span>
 						hat {{results.length}} Ergebnisse geliefert
 					</slot>
 
@@ -142,7 +142,7 @@
 
 		</div>
 
-		<slot name="start" v-if="results.length <= 0 && search_term.length <= 0"></slot>
+		<slot name="start" v-if="results.length <= 0 && value.length <= 0"></slot>
 
 		<transition-group class="ch-dkfbasel-search-results" tag="ul"
 			@leave="leave"  @enter="enter" @before-enter="beforeEnter">
@@ -165,11 +165,10 @@
 
 	module.exports = {
 
-		props: ['autofocus', 'query'],
+		props: ['autofocus', 'query', 'value'],
 
 		data() {
 			return {
-				search_term: '',
 				hint: '',
 				results: []
 			};
@@ -183,12 +182,13 @@
 
 		methods: {
 
-			onInput() {
+			onInput(value) {
 				// inform the user that pressing enter will start the search
 				if (this.hint != 'typing') {
 					this.hint = 'typing';
 					this.results = [];
 				}
+				this.$emit('input', value)
 			},
 
 			onSearch() {
