@@ -27,8 +27,16 @@
 				has returned {{props.amount}} results
 			</template>
 
+			<template slot="before_result">
+				<span>Dieser Bereich ist für Informationen VOR dem Suchergebnis gedacht.</span>
+			</template>
+
 			<template slot="result" scope="props">
 				<span>{{props.result.title}}</span>
+			</template>
+
+			<template slot="after_result">
+				<span>Dieser Bereich ist für Informationen NACH dem Suchergebnis gedacht.</span>
 			</template>
 
 		</search>

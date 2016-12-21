@@ -37,7 +37,12 @@ presentation and optionally a content to be presented from the beginning:
 
 	<template slot="result" scope="props">
 		... // any html code
-		// use {{props.result}} to access the result based on your data model
+		// use {{props.result}} to access the result based on your data model, e.g.
+		// if your data model looks like {title: "Cook book", description: "A book with lots of yammy food"}:
+		<div class="result-item">
+			<h2>{{props.result.title}}</h2>
+			<span>{{props.result.description}}</span>
+		</div>
 	</template>
 
 </search>
@@ -65,6 +70,22 @@ When results are presented:
 	...
 	// use {{props.term}} to display the term your were searching for
 	// use {{props.amount}} to display the number of results
+</template>
+```
+
+Additional information before and after the search results can be added optionally:
+
+To be shown before the result
+```javascript
+<template slot="before_result">
+	... // any html code
+</template>
+```
+
+To be shown after the result:
+```javascript
+<template slot="after_result">
+	... // any html code
 </template>
 ```
 

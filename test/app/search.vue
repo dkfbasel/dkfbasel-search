@@ -76,6 +76,17 @@
 			display: block;
 		}
 
+		 .ch-dkfbasel-search-block {
+
+			&.before-result {
+				padding-top: 20px;
+			}
+
+			&.after-result {
+				padding-bottom: 20px;
+			}
+		 }
+
 	}
 
 </style>
@@ -144,14 +155,26 @@
 
 		<slot name="start" v-if="results.length <= 0 && value.length <= 0"></slot>
 
+		<transition name="ch-dkfbasel-search-fade">
+			<div class="ch-dkfbasel-search-block before-result" v-if="results.length > 0">
+				<slot name="before_result"></slot>
+			</div>
+		</transition>
+
 		<transition-group class="ch-dkfbasel-search-results" tag="ul"
-			@leave="leave"  @enter="enter" @before-enter="beforeEnter">
+			@leave="leave" @enter="enter" @before-enter="beforeEnter">
 
 			<li v-for="(item, index) in results" :data-index="index" :key="index" :data-max="results.length">
 				<slot name="result" :result="item">No template provided: {{item}}</slot>
 			</li>
 
 		</transition-group>
+
+		<transition name="ch-dkfbasel-search-fade">
+			<div class="ch-dkfbasel-search-block after-result" v-if="results.length > 0">
+				<slot name="after_result"></slot>
+			</div>
+		</transition>
 
 	</div>
 </template>
