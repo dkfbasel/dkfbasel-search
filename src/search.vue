@@ -78,11 +78,11 @@
 
 		 .ch-dkfbasel-search-block {
 
-			&.before {
+			&.before-result {
 				padding-top: 20px;
 			}
 
-			&.after {
+			&.after-result {
 				padding-bottom: 20px;
 			}
 		 }
@@ -96,7 +96,7 @@
 
 		<div class="ch-dkfbasel-search-box">
 
-			<input type="text" v-bind:value="value" @blur="onBlur"
+			<input type="text" v-bind:value="value" @blur="onBlur" :placeholder="placeholder"
 				@input="onInput($event.target.value)" @keyup.enter="onSearch" ref="searchbox"></input>
 
 			<svg class="ch-dkfbasel-search-icon" width="18px" height="18px" viewBox="0 0 18 18" version="1.1"
@@ -156,7 +156,7 @@
 		<slot name="start" v-if="results.length <= 0 && value.length <= 0"></slot>
 
 		<transition name="ch-dkfbasel-search-fade">
-			<div class="ch-dkfbasel-search-block before" v-if="results.length > 0">
+			<div class="ch-dkfbasel-search-block before-result" v-if="results.length > 0">
 				<slot name="before_result"></slot>
 			</div>
 		</transition>
@@ -171,7 +171,7 @@
 		</transition-group>
 
 		<transition name="ch-dkfbasel-search-fade">
-			<div class="ch-dkfbasel-search-block after" v-if="results.length > 0">
+			<div class="ch-dkfbasel-search-block after-result" v-if="results.length > 0">
 				<slot name="after_result"></slot>
 			</div>
 		</transition>
@@ -185,7 +185,7 @@
 
 	module.exports = {
 
-		props: ['autofocus', 'query', 'value'],
+		props: ['autofocus', 'query', 'value', 'placeholder'],
 
 		data() {
 			return {
