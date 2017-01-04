@@ -96,7 +96,7 @@
 
 		<div class="ch-dkfbasel-search-box">
 
-			<input type="text" v-bind:value="value" @blur="onBlur"
+			<input type="text" v-bind:value="value" @blur="onBlur" :placeholder="placeholder"
 				@input="onInput($event.target.value)" @keyup.enter="onSearch" ref="searchbox"></input>
 
 			<svg class="ch-dkfbasel-search-icon" width="18px" height="18px" viewBox="0 0 18 18" version="1.1"
@@ -185,7 +185,7 @@
 
 	module.exports = {
 
-		props: ['autofocus', 'query', 'value'],
+		props: ['autofocus', 'query', 'value', 'placeholder'],
 
 		data() {
 			return {

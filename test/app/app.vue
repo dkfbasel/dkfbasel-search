@@ -15,7 +15,8 @@
 
 	<div class="wrapper">
 
-		<search autofocus :query="startSearch" v-model="search_term">
+		<search autofocus :query="startSearch" v-model="search_term"
+			placeholder="Enter search term">
 
 			<template slot="start">
 				<div class="start-info">This is starting text</div>
