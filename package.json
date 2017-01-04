@@ -1,6 +1,6 @@
 {
   "name": "dkfbasel-search",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An awesome search component for vue.js 2.1+",
   "main": "src/search.vue",
   "dependencies": {

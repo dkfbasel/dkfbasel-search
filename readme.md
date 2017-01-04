@@ -28,7 +28,7 @@ Place the dkfbasel-search component inside your template and define the result
 presentation and optionally a content to be presented from the beginning:
 
 ```javascript
-<search autofocus :query="yourSearchQuery">
+<search autofocus :query="yourSearchQuery" placeholder="the placeholder text is optional">
 
 	<template slot="start">
 		... // any html code, e.g.:
