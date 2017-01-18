@@ -81,9 +81,11 @@
 					return book.title.indexOf(search_term) > -1;
 				});
 
-				return new Promise((resolve) => setTimeout(() => {
-					return resolve(result)
-				}, 500));
+				return new Promise((resolve, reject) => setTimeout(() => {
+					return resolve(result);
+				}, 500)).catch((response) => {
+					return reject(response);
+				});
 			}
 
 		}

@@ -149,6 +149,18 @@
 
 				</div>
 
+				<div v-if="hint == 'error'" key="error">
+
+					<svg xmlns="http://www.w3.org/2000/svg" width="5" height="10">
+						<path fill="none" stroke="#000" stroke-width="1" d="M0 0 L5 5 L0 10"></path>
+					</svg>
+
+					<slot name="hint_error">
+						Bei der Suche ist ein Fehler aufgetreten.
+					</slot>
+
+				</div>
+
 			</transition>
 
 		</div>
@@ -225,7 +237,10 @@
 				.then((responses) => {
 					this.results = responses[0];
 					this.hint = 'result';
-				})
+				}).catch((response) => {
+					this.hint = 'error';
+					console.log(response);
+				});
 			},
 
 			onBlur() {
