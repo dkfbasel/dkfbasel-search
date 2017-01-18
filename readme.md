@@ -73,6 +73,13 @@ When results are presented:
 </template>
 ```
 
+When an error occured while searching:
+```javascript
+<template slot="hint_error">
+	... // any html code
+</template>
+```
+
 Additional information before and after the search results can be added optionally:
 
 To be shown before the result
