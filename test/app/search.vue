@@ -246,8 +246,15 @@
 			},
 
 			enter(el, done) {
+				let index;
+				// ie9 does not support element.dataset, getAttribute as alternative
+				if (el.dataset !== undefined) {
+					index = el.dataset.index;
+				} else {
+					index = el.getAttribute('data-index');
+				}
 				// accelerate the staggering with each result item
-				let delay = Math.sqrt(el.dataset.index) * 50 + 150;
+				let delay = Math.sqrt(index) * 50 + 150;
 				// animate in result
 				setTimeout(() => {
 					dynamics.animate(el, {
@@ -261,8 +268,18 @@
 			},
 
 			leave(el, done) {
+				let index;
+				let max;
+				// ie9 does not support element.dataset, getAttribute as alternative
+				if (el.dataset !== undefined) {
+					index = el.dataset.index;
+					max = el.dataset.max;
+				} else {
+					index = el.getAttribute('data-index');
+					max = el.getAttribute('data-max');
+				}
 				// stagger the result items animation out linear
-				let delay = (el.dataset.max - el.dataset.index) * 10;
+				let delay = (max - index) * 10;
 				// animate out result
 				setTimeout(() => {
 					dynamics.animate(el, {
