@@ -60,6 +60,26 @@
 					fill: none;
 				}
 			}
+
+			.clear-search {
+
+				position: absolute;
+				top: 17.5px;
+				right: 17.5px;
+				cursor: pointer;
+
+				path {
+					stroke: tint($default-color, 70%);
+					stroke-width: 1.25px;
+					fill: none;
+				}
+
+				&:hover {
+					path {
+						stroke: $default-color;
+					}
+				}
+			}
 		}
 
 		.ch-dkfbasel-search-hint {
@@ -96,7 +116,7 @@
 
 		<div class="ch-dkfbasel-search-box">
 
-			<input type="text" v-bind:value="value" @blur="onBlur" :placeholder="placeholder"
+			<input type="text" v-bind:value="value" :placeholder="placeholder"
 				@input="onInput($event.target.value)" @keyup.enter="onSearch" ref="searchbox"></input>
 
 			<svg class="ch-dkfbasel-search-icon" width="18px" height="18px" viewBox="0 0 18 18" version="1.1"
@@ -104,6 +124,14 @@
 				<circle cx="7.5" cy="7.5" r="6.5"></circle>
 				<path d="M12.5,12.5 L16,16" stroke-linecap="round"></path>
 			</svg>
+
+			<div class="clear-search" @click="clear">
+				<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1"
+					xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<path d="M0,0 L14,14" stroke-linecap="round"></path>
+					<path d="M0,14 L14,0" stroke-linecap="round"></path>
+				</svg>
+			</div>
 
 		</div>
 
@@ -243,11 +271,10 @@
 				});
 			},
 
-			onBlur() {
-				// clear hint if the search box is empty
-				if (this.search_term == '') {
-					this.hint = '';
-				}
+			clear() {
+				this.results = [];
+				this.hint = '';
+				this.$emit('input', '');
 			},
 
 			// vue transition handling for the result group
