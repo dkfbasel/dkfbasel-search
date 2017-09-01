@@ -223,7 +223,7 @@
 
 	import dynamics from 'dynamics.js';
 
-	module.exports = {
+	const component = {
 
 		props: ['autofocus', 'query', 'value', 'placeholder'],
 
@@ -336,6 +336,8 @@
 			}
 		}
 
-	}
+	};
+
+	export default component;
 
 </script>
